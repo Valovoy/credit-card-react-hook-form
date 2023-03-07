@@ -1,7 +1,8 @@
+import CardForm from 'components/CardForm/CardForm'
 import 'ui/default.scss'
 
 function App() {
-  return <>hello world</>
+  return <CardForm />
 }
 
 export default App
