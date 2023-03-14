@@ -1,0 +1,17 @@
+.row {
+  display: flex;
+  width: 100%;
+  padding-bottom: 20px;
+
+  .fieldContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .label {
+      font-size: 14px;
+      color: var(--grayText);
+      margin-bottom: 2px;
+    }
+  }
+}
