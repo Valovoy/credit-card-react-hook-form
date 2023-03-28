@@ -16,6 +16,10 @@ button {
   font-size: 16px;
 }
 
+span {
+  font-family: 'Source Code Pro', sans-serif;
+}
+
 :root {
   --white: #ffffff;
   --grayText: #545353;
@@ -23,4 +27,5 @@ button {
   --inputColor: #333333;
   --bgColor: #180148;
   --blue: #1309d9;
+  --black: #000;
 }
