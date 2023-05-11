@@ -2,11 +2,16 @@ import Select from 'react-select'
 import { ISelectFieldProps } from './SelectField.interface'
 import styles from './SelectField.module.scss'
 
-const SelectField = ({ options }: ISelectFieldProps) => {
+const MAX_MENU_HEIGHT = 200
+
+const SelectField = ({ options, onInputFocus }: ISelectFieldProps) => {
   return (
     <div className={styles.container}>
       <Select
         options={options}
+        maxMenuHeight={MAX_MENU_HEIGHT}
+        onFocus={onInputFocus}
+        aria-label="cardExpires"
         styles={{
           control: baseStyles => ({
             ...baseStyles,

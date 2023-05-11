@@ -5,4 +5,5 @@ interface IOption {
 
 export interface ISelectFieldProps {
   options: IOption[]
+  onInputFocus: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
