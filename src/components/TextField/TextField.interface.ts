@@ -1,4 +1,6 @@
 export interface ITextFieldProps {
-  onInputFocus?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  dataset?: string
+  name: string
+  type?: string
+  dataset: string
+  onInputFocus: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
