@@ -5,4 +5,14 @@
   border: 1px solid var(--borderColor);
   padding: 10px;
   color: var(--inputColor);
+  margin-bottom: 5px;
+
+  &.error {
+    border: 1px solid var(--redAlert);
+  }
+}
+
+.errorMsg {
+  color: var(--redAlert);
+  font-size: 10px;
 }

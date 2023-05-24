@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form'
+import { cardFormResolver as resolver } from 'utils/schema/cardSchema'
 import SelectField from 'components/SelectField/SelectField'
 import TextField from 'components/TextField/TextField'
 import CardView from 'components/CardView/CardView'
@@ -11,7 +12,7 @@ import styles from './CardForm.module.scss'
 const CardForm = () => {
   const [focusFieldName, setFocusFieldName] = useState<string | null>(null)
 
-  const methods = useForm<ICardFormFields>()
+  const methods = useForm<ICardFormFields>({ resolver })
 
   const onInputFocus = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setFocusFieldName(e.target.ariaLabel)

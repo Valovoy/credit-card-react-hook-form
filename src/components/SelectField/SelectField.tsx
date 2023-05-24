@@ -10,7 +10,7 @@ const SelectField = ({ name, options, onInputFocus }: ISelectFieldProps) => {
     <Controller
       name={name}
       defaultValue=""
-      render={({ field: { onChange, name } }) => (
+      render={({ field: { onChange, name }, fieldState: { error } }) => (
         <div className={styles.container}>
           <Select
             onChange={val => onChange(val?.value)}
@@ -24,7 +24,7 @@ const SelectField = ({ name, options, onInputFocus }: ISelectFieldProps) => {
                 ...baseStyles,
                 paddingLeft: 7,
                 height: 40,
-                borderColor: '#aeaaaa',
+                borderColor: error ? '#ff0000' : '#aeaaaa',
                 boxShadow: 'none',
                 '&:hover': {
                   borderColor: '#aeaaaa',
