@@ -6,8 +6,13 @@ import TextField from 'components/TextField/TextField'
 import CardView from 'components/CardView/CardView'
 import InputRow from 'ui/InputRow/InputRow'
 import { optionsMonths, optionsYears } from 'utils/constants/expirationDate'
+import { formatCardNumber } from 'utils/formatCardNumber'
+import { formatCVV } from 'utils/formatCVV'
 import { ICardFormFields } from './CardForm.interface'
 import styles from './CardForm.module.scss'
+
+const MAX_CARD_NUMBER_LENGTH = 19
+const MAX_CVV_LENGTH = 3
 
 const CardForm = () => {
   const [focusFieldName, setFocusFieldName] = useState<string | null>(null)
@@ -27,10 +32,11 @@ const CardForm = () => {
           <CardView focusFieldName={focusFieldName} />
           <InputRow label="Card Number">
             <TextField
-              onInputFocus={onInputFocus}
-              dataset="cardNumber"
+              maxLength={MAX_CARD_NUMBER_LENGTH}
               name="cardNumber"
-              type="number"
+              dataset="cardNumber"
+              onInputFocus={onInputFocus}
+              onFormatValue={formatCardNumber}
             />
           </InputRow>
           <InputRow label="Card Holders">
@@ -61,10 +67,11 @@ const CardForm = () => {
               containerStyles={styles.cvvContainer}
             >
               <TextField
-                onInputFocus={onInputFocus}
-                dataset="cardCVV"
                 name="cvv"
-                type="number"
+                dataset="cardCVV"
+                maxLength={MAX_CVV_LENGTH}
+                onInputFocus={onInputFocus}
+                onFormatValue={formatCVV}
               />
             </InputRow>
           </div>
