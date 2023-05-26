@@ -5,4 +5,7 @@ export interface ITextFieldProps {
   minLength?: number
   dataset: string
   onInputFocus: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onFormatValue?: (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => React.ChangeEvent<HTMLInputElement>
 }

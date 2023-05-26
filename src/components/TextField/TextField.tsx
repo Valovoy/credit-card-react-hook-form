@@ -10,6 +10,7 @@ const TextField = ({
   dataset,
   maxLength,
   minLength,
+  onFormatValue,
 }: ITextFieldProps) => (
   <Controller
     name={name}
@@ -19,7 +20,9 @@ const TextField = ({
         <input
           type={type}
           className={cn(styles.input, error && styles.error)}
-          onChange={onChange}
+          onChange={e => {
+            onFormatValue ? onChange(onFormatValue(e)) : onChange(e)
+          }}
           onFocus={onInputFocus}
           aria-label={dataset}
           value={value}
