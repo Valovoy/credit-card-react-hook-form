@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
+import { useWatch } from 'react-hook-form'
 import cn from 'classnames'
+import { formatCardNumberView } from 'utils/formatCardNumber'
 import { ICardViewProps } from './CardView.interface'
+import { CardMasks } from 'utils/constants/cardMasks'
 import styles from './CardView.module.scss'
 
 import chip from 'assets/images/chip.png'
@@ -10,6 +13,8 @@ const CardView = ({ focusFieldName }: ICardViewProps) => {
   const [isFrontCard, setIsFrontCard] = useState(true)
 
   const focusRef = useRef<HTMLInputElement>(null)
+
+  const values = useWatch()
 
   useEffect(() => {
     if (!!focusFieldName) {
@@ -43,17 +48,22 @@ const CardView = ({ focusFieldName }: ICardViewProps) => {
           </div>
           <div className={styles.cardInfo} id="cardNumber">
             <span className={cn(styles.info, styles.cardNumber)}>
-              #### #### #### ####
+              {formatCardNumberView(values.cardNumber)}
             </span>
           </div>
           <div className={styles.cardInfoContainer}>
             <div className={styles.cardInfo} id="cardHolder">
               <span className={styles.label}>Card Holder</span>
-              <span className={styles.info}>FULL NAME</span>
+              <span className={styles.info}>
+                {values.cardHolder || CardMasks.CardHolder}
+              </span>
             </div>
             <div className={styles.cardInfo} id="cardExpires">
               <span className={styles.label}>Expires</span>
-              <span className={styles.info}>MM/YY</span>
+              <span className={styles.info}>
+                {values.month || CardMasks.Month}/
+                {values.year || CardMasks.Year}
+              </span>
             </div>
           </div>
         </div>

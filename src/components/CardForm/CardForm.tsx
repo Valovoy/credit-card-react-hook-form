@@ -6,7 +6,7 @@ import TextField from 'components/TextField/TextField'
 import CardView from 'components/CardView/CardView'
 import InputRow from 'ui/InputRow/InputRow'
 import { optionsMonths, optionsYears } from 'utils/constants/expirationDate'
-import { formatCardNumber } from 'utils/formatCardNumber'
+import { formatCardNumberInput } from 'utils/formatCardNumber'
 import { formatCVV } from 'utils/formatCVV'
 import { ICardFormFields } from './CardForm.interface'
 import styles from './CardForm.module.scss'
@@ -36,7 +36,7 @@ const CardForm = () => {
               name="cardNumber"
               dataset="cardNumber"
               onInputFocus={onInputFocus}
-              onFormatValue={formatCardNumber}
+              onFormatValue={formatCardNumberInput}
             />
           </InputRow>
           <InputRow label="Card Holders">
