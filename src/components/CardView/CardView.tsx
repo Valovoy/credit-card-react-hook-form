@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useWatch } from 'react-hook-form'
 import cn from 'classnames'
 import { formatCardNumberView } from 'utils/formatCardNumber'
+import { twoDigits } from 'utils/formatDate'
 import { ICardViewProps } from './CardView.interface'
 import { CardMasks } from 'utils/constants/cardMasks'
 import styles from './CardView.module.scss'
@@ -52,7 +53,10 @@ const CardView = ({ focusFieldName }: ICardViewProps) => {
             </span>
           </div>
           <div className={styles.cardInfoContainer}>
-            <div className={styles.cardInfo} id="cardHolder">
+            <div
+              className={cn(styles.cardInfo, styles.cardHolder)}
+              id="cardHolder"
+            >
               <span className={styles.label}>Card Holder</span>
               <span className={styles.info}>
                 {values.cardHolder || CardMasks.CardHolder}
@@ -61,8 +65,8 @@ const CardView = ({ focusFieldName }: ICardViewProps) => {
             <div className={styles.cardInfo} id="cardExpires">
               <span className={styles.label}>Expires</span>
               <span className={styles.info}>
-                {values.month || CardMasks.Month}/
-                {values.year || CardMasks.Year}
+                {twoDigits(values.month) || CardMasks.Month}/
+                {twoDigits(values.year) || CardMasks.Year}
               </span>
             </div>
           </div>
@@ -73,7 +77,7 @@ const CardView = ({ focusFieldName }: ICardViewProps) => {
           <div className={styles.magneticStripe} />
           <div className={styles.cardInfo}>
             <span className={styles.label}>CVV</span>
-            <div className={styles.cvvField} />
+            <div className={styles.cvvField}>{values.cvv}</div>
             <img src={visa} alt="visa" className={styles.typeCard} />
           </div>
         </div>
