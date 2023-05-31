@@ -71,6 +71,16 @@
             word-spacing: 10px;
           }
         }
+
+        &.cardHolder {
+          width: 200px;
+
+          .info {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
       }
     }
 
@@ -102,6 +112,11 @@
           background-color: var(--white);
           margin-bottom: 30px;
           border-radius: 5px;
+          color: var(--black);
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding: 5px;
         }
       }
     }
